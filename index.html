@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consulting For Capital — Strategic Alliance of CODEX, CMI & Fairgrove</title>
+  <meta name="description" content="Consulting For Capital (CFC) is a pan-European strategic alliance of CODEX Partners, CMI Stratégies and Fairgrove Partners. We advise private investors and high-growth companies across strategy, value creation and transaction services." />
+
+  <!-- Open Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --accent:#a18543;         /* accent */
+      --text:#0F4C5C;           /* text */
+      --bgPage:#edece8;         /* background */
+      --cmi:#0c6e79;            /* CMI */
+      --fairgrove:#03b585;      /* Fairgrove */
+      --codex:#aa373f;          /* CODEX */
+    }
+    html,body{height:100%}
+    body{font-family:"Open Sans", Arial, Helvetica, sans-serif; color:var(--text); background:var(--bgPage)}
+    .container{max-width:1200px;margin:0 auto}
+
+    /* header */
+    .header-solid{background:var(--bgPage); border:1px solid #e5e7eb; color:var(--text)}
+    .navlink{position:relative}
+    .navlink::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+    .navlink.active::after,.navlink:hover::after{transform:scaleX(1)}
+
+    /* buttons & cards */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border:1px solid #d1d5db;background:#fff;color:var(--text);font-weight:600}
+    .btn:hover{background:#f8fafc}
+    .btn-accent{border:1px solid var(--accent);background:var(--accent);color:#fff}
+    .btn-accent:hover{filter:brightness(.95)}
+    .card{background:#fff;border:1px solid #e5e7eb}
+    .avatar{width:96px;height:96px;object-fit:cover;border:1px solid #e5e7eb;border-radius:.5rem}
+
+    /* icon-only arrows for carousel */
+    .icon-btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:44px;height:44px;border:0;background:transparent;color:var(--text);cursor:pointer;
+    }
+    .icon-btn:hover{opacity:.8}
+    .icon-btn:focus{outline:2px solid rgba(0,0,0,.2); outline-offset:2px}
+    .icon-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+
+    /* sectors */
+    .sector-card{position:relative;height:180px;display:flex;align-items:flex-end;padding:0;color:#fff;border:1px solid #e5e7eb;border-radius:.75rem;overflow:hidden;background:#0b1e2a}
+    .sector-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+    .sector-card::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.4) 45%, rgba(0,0,0,.95) 100%);}    
+    .sector-card>div{position:relative;z-index:2;width:100%}
+    .sector-card .label{font-weight:700}
+    .sector-card .caption{padding:14px 16px;text-shadow:none;}
+
+    /* SERVICES (carousel matching PPT style) */
+    .svc-tabs{display:flex;gap:10px;margin-top:18px}
+    .svc-tabs button{flex:1 1 0%;position:relative;padding:10px 14px;border:1px solid #d1d5db;background:#fff;font-weight:700;color:var(--text);border-radius:8px}
+    .svc-tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .svc-grid{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+    .svc-grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .svc-col{background:#fff;border:1px solid #e5e7eb;padding:18px;border-radius:12px}
+    .svc-col h4{color:var(--accent);font-weight:800;margin-bottom:8px;text-align:center}
+    .svc-col ul{font-size:15px;line-height:1.55;color:#0f172a}
+    @media (max-width: 900px){.svc-grid,.svc-grid.cols-2{grid-template-columns:1fr}}
+
+    /* references marquee */
+    .logo-marquee{display:block;overflow:hidden;border:1px solid #e5e7eb;background:transparent;margin-top:1.5rem;border-radius:12px}
+    .logo-track{display:flex;gap:0;align-items:center;width:max-content;animation:scrollX 45s linear infinite;padding:0}
+    .logo-track img{height:120px;width:auto;display:block;filter:grayscale(100%);opacity:.95}
+    .logo-track img:hover{filter:none;opacity:1}
+    @keyframes scrollX{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    @media (max-width: 800px){
+      .logo-track img{height:90px}
+    }
+
+    /* static EU network map (image + pins) */
+    .mapBox{position:relative;width:100%;min-height:420px;background:transparent;border:0;border-radius:0;overflow:visible}
+    .mapImg{display:block;width:100%;height:auto}
+    .pin{position:absolute;transform:translate(-50%,-50%);width:14px;height:14px;border:2px solid #fff;border-radius:9999px;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+    .pin .lbl{position:absolute;left:16px;top:-2px;white-space:nowrap;background:#fff;border:1px solid #e5e7eb;padding:4px 8px;border-radius:8px;font-size:12px}
+    .pin-cmi{background:#0c6e79}
+    .pin-fairgrove{background:#03b585}
+    .pin-codex{background:#aa373f}
+
+    /* org list next to the map */
+    .org{display:flex;gap:12px}
+    .org+.org{margin-top:18px}
+    .org .dot{width:28px;height:28px;border-radius:9999px;box-shadow:inset 0 0 0 2px #e5e7eb}
+    .dot-cmi{background:#0c6e79}
+    .dot-fairgrove{background:#03b585}
+    .dot-codex{background:#aa373f}
+
+    /* Alliance advantages styling */
+    .adv-grid .text-lg{color:var(--accent);font-weight:700;text-align:center}
+    .adv-grid ul{list-style:none;padding-left:0;text-align:center}
+
+    /* KPI grid (Key facts) */
+    .kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+    .kpi-grid>div{padding:28px 12px}
+    .kpi-num{font-weight:800;color:var(--accent);font-size:clamp(2.25rem,5vw,4rem);line-height:1}
+    .kpi-label{color:#6b7280;margin-top:.25rem}
+      /* firm logos next to office details */
+    .org-logo{width:88px;height:88px;object-fit:contain;flex:0 0 auto;background:transparent;border:0;border-radius:0;padding:0}
+      /* partner bio popup */
+    .bio-link{color:var(--text);text-decoration:underline;cursor:pointer;background:none;border:0;padding:0}
+    .bio-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:60}
+    .bio-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;max-width:820px;width:min(92%,820px);box-shadow:0 20px 60px rgba(0,0,0,.2);display:grid;grid-template-columns:160px 1fr;gap:18px;padding:18px}
+    .bio-photo{width:160px;height:220px;object-fit:contain;background:#f8fafc}
+    .bio-close{position:absolute;top:10px;right:10px;background:transparent;border:0;cursor:pointer}
+    @media (max-width:640px){.bio-card{grid-template-columns:1fr}.bio-photo{width:100%;height:220px;object-fit:contain}}
+      /* --- overrides per latest brief: no rounded white boxes sitewide --- */
+    .card{background:transparent !important;}
+    .rounded, .rounded-md, .rounded-lg, .rounded-xl{border-radius:0 !important}
+    .logo-marquee{background:transparent !important; border-radius:0 !important}
+    .svc-col{background:transparent !important; border-radius:0 !important}
+    .svc-tabs button{border-radius:0 !important}
+    #svcCarousel{border-radius:0 !important}
+  </style>
+</head>
+<body>
+  <!-- HEADER (frozen) -->
+  <header class="fixed top-0 inset-x-0 z-40">
+    <div class="container px-4">
+      <div class="mt-4 mb-2 flex items-center justify-between header-solid px-4 py-3 rounded-md">
+        <a href="#home" class="flex items-center gap-3"><img src="assets/Logo.png" alt="Consulting For Capital — CMI • Fairgrove • CODEX" class="h-8 md:h-10 w-auto" onerror="this.classList.add('hidden')"></a>
+        <nav class="hidden md:flex gap-7 text-[15px]">
+          <a class="navlink" href="#home">Home</a>
+          <a class="navlink" href="#alliance">Strategic Alliance</a>
+          <a class="navlink" href="#services">Services</a>
+          <a class="navlink" href="#sectors">Sectors</a>
+          <a class="navlink" href="#offices">Offices</a>
+          <a class="navlink" href="#references">References</a>
+          <a class="navlink" href="#contact">Contact</a>
+        </nav>
+        <button id="menuBtn" class="md:hidden" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/50" onclick="toggleMenu(false)" aria-hidden="true"></div>
+    <div class="absolute right-0 top-0 h-full w-[78%] max-w-sm bg-white shadow-xl p-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="h-8 w-8 rounded bg-[var(--accent)]"></div>
+          <div class="font-semibold">CFC</div>
+        </div>
+        <button class="p-2" onclick="toggleMenu(false)" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="mt-6 flex flex-col text-base">
+        <a class="py-2" href="#home" onclick="toggleMenu(false)">Home</a>
+        <a class="py-2" href="#alliance" onclick="toggleMenu(false)">Strategic Alliance</a>
+        <a class="py-2" href="#services" onclick="toggleMenu(false)">Services</a>
+        <a class="py-2" href="#sectors" onclick="toggleMenu(false)">Sectors</a>
+        <a class="py-2" href="#offices" onclick="toggleMenu(false)">Offices</a>
+        <a class="py-2" href="#references" onclick="toggleMenu(false)">References</a>
+        <a class="py-2" href="#contact" onclick="toggleMenu(false)">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO / HOME -->
+  <section id="home" class="relative isolate pt-24 pb-10">
+    <div class="w-full">
+      <img src="assets/River-Bild.png" alt="River aerial hero" class="w-full h-[320px] md:h-[420px] object-cover">
+    </div>
+
+    <div class="container px-4">
+      <div class="mt-8">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">Consulting For Capital</h1>
+        <div class="mt-2 text-xl md:text-2xl opacity-90">Pan-European Commercial Advisory Alliance</div>
+        <p class="mt-6 text-lg md:text-xl max-w-4xl">
+          Consulting For Capital is an exclusive international consulting partnership between three of Europe’s leading commercial advisory firms. It has been created to support ambitious, high-growth corporations and private equity firms in resolving their most critical commercial challenges across strategy, mergers & acquisitions and business transformation.
+        </p>
+        </div>
+    </div>
+  </section>
+
+  <!-- STRATEGIC ALLIANCE -->
+  <section id="alliance" class="py-14">
+    <div class="container px-4">
+      <div class="card p-8 rounded-xl">
+        <div class="max-w-5xl">
+          <h2 class="text-3xl font-bold tracking-tight">Strategic Alliance</h2>
+
+          <div class="mt-6 space-y-6 text-[18px] leading-8">
+            <p>Consulting For Capital is a partnership built on a belief in the power of cross-border, sector-focused teams, entrepreneurial spirit and investment in top-tier talent to produce outstanding results for our clients and employees.</p>
+            <p>The alliance was formed to solve the most important and complex challenges for owners, investors, and managers of market-leading businesses in Europe, and beyond.</p>
+            <p>Our mission is to be the leading adviser to private investors and high-growth corporations in Europe.</p>
+            <p>With 170+ consultants in key economic hubs across London, Paris, Madrid, Munich, Frankfurt and Zurich, Consulting For Capital combines the deep local knowledge, craftsmanship and high-touch service levels of three entrepreneurial firms into a pan-European consulting platform with scale, reach and the collective experience of over 1,700 client projects.</p>
+          </div>
+
+          <div class="mt-10">
+            <div class="flex items-center justify-center">
+              <img src="assets/Logo.png" alt="Alliance logos: CMI • Fairgrove • CODEX" class="h-16 md:h-20 w-auto"/>
+            </div>
+          </div>
+
+          <!-- Alliance advantages -->
+          <div class="mt-10">
+            <div class="font-semibold">Alliance advantages</div>
+            <div class="mt-3 grid md:grid-cols-2 lg:grid-cols-4 gap-4 adv-grid">
+              <div class="card p-5 h-full rounded-lg">
+                <div class="text-lg font-semibold">Joint delivery of pan-European projects</div>
+                <ul class="list-none mt-2 space-y-2 text-[15px] leading-6">
+                  <li>Local teams lead the assessment in each country.</li>
+                  <li>One joined-up answer with granular insights.</li>
+                </ul>
+              </div>
+              <div class="card p-5 h-full rounded-lg">
+                <div class="text-lg font-semibold">Depth in key sub-sectors</div>
+                <ul class="list-none mt-2 space-y-2 text-[15px] leading-6">
+                  <li>Scale across three firms builds deep expertise.</li>
+                  <li>Sector teams debate trends and market activity.</li>
+                </ul>
+              </div>
+              <div class="card p-5 h-full rounded-lg">
+                <div class="text-lg font-semibold">Shared best practice</div>
+                <ul class="list-none mt-2 space-y-2 text-[15px] leading-6">
+                  <li>1,700+ projects power proven approaches.</li>
+                  <li>Staff secondments strengthen collaboration.</li>
+                </ul>
+              </div>
+              <div class="card p-5 h-full rounded-lg">
+                <div class="text-lg font-semibold">End-to-end support</div>
+                <ul class="list-none mt-2 space-y-2 text-[15px] leading-6">
+                  <li>From thesis &amp; CDD to value creation and sale.</li>
+                  <li>Pragmatic, hands-on delivery.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key facts (2x3 grid) -->
+          <div class="mt-8">
+            <div class="kpi-grid rounded">
+              <div class="text-center"><div class="kpi-num">1,700+</div><div class="kpi-label">Projects</div></div>
+              <div class="text-center"><div class="kpi-num">170+</div><div class="kpi-label">Consultants</div></div>
+              <div class="text-center"><div class="kpi-num">6</div><div class="kpi-label">Offices</div></div>
+              <div class="text-center"><div class="kpi-num">9</div><div class="kpi-label">Sectors</div></div>
+              <div class="text-center"><div class="kpi-num">200+</div><div class="kpi-label">PE funds served</div></div>
+              <div class="text-center"><div class="kpi-num">15+</div><div class="kpi-label">Countries served</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-14">
+    <div class="container px-4">
+      <div class="flex items-end justify-between flex-wrap gap-6">
+        <h2 class="text-3xl font-bold tracking-tight">Services</h2>
+        <a href="#contact" class="btn-accent rounded">Get in Touch</a>
+      </div>
+
+      <p class="mt-3 text-slate-700 max-w-4xl">We support investors and management teams across the entire investment cycle. Our work clusters into three categories — <strong>Investment</strong>, <strong>Value Creation</strong> and <strong>Sale</strong>. In each, we blend evidence-based analysis with pragmatic, hands-on delivery using joint CFC teams across countries. Typical outputs include investment theses & commercial DD, value-creation plans with pricing and go-to-market playbooks, and vendor materials including equity story, business plan and IM input.</p>
+
+      <!-- Tabs (snapshot of current slide) -->
+      <div class="svc-tabs" id="svcTabs">
+        <button data-goto="0" class="active">Investment</button>
+        <button data-goto="1">Value Creation</button>
+        <button data-goto="2">Sale</button>
+      </div>
+
+      <!-- Carousel: three slides -->
+      <div class="mt-4 border border-slate-200 overflow-hidden rounded" id="svcCarousel">
+        <div class="flex transition-transform duration-500" style="width:300%">
+          <!-- Slide 1: Investment -->
+          <div class="w-1/3 p-6">
+            <div class="svc-grid cols-2">
+              <div class="svc-col">
+                <h4>Target search</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Market assessment</li>
+                  <li>Development of investment thesis</li>
+                  <li>Target mapping and evaluation</li>
+                  <li>Introduction to attractive targets</li>
+                </ul>
+              </div>
+              <div class="svc-col">
+                <h4>Due Diligence</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Commercial DD</li>
+                  <li>Buy-and-build strategy</li>
+                  <li>IT &amp; digital marketing audit</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Value Creation -->
+          <div class="w-1/3 p-6">
+            <div class="svc-grid">
+              <div class="svc-col">
+                <h4>Transformation &amp; Operations</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Re-evaluation of operating model</li>
+                  <li>Go-to-market optimization</li>
+                  <li>Sales &amp; marketing transformation</li>
+                  <li>Operational audits (e.g. supply chain, production)</li>
+                  <li>Org design &amp; change management</li>
+                </ul>
+              </div>
+              <div class="svc-col">
+                <h4>Growth Strategy</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Business &amp; market context</li>
+                  <li>Strategic planning &amp; growth initiatives</li>
+                  <li>Diversification and market entry</li>
+                </ul>
+              </div>
+              <div class="svc-col">
+                <h4>Innovation Strategy</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Structuring the innovation / R&amp;D process</li>
+                  <li>Competitive benchmarking</li>
+                  <li>Development prioritization</li>
+                  <li>NPD / services co-development</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Sale -->
+          <div class="w-1/3 p-6">
+            <div class="svc-grid cols-2">
+              <div class="svc-col">
+                <h4>Vendor Assistance</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Preparing for exit</li>
+                  <li>Building a business plan</li>
+                  <li>Input into Information Memorandum</li>
+                </ul>
+              </div>
+              <div class="svc-col">
+                <h4>Vendor Due Diligence</h4>
+                <ul class="list-disc ml-5 space-y-1.5">
+                  <li>Assessment of value proposition &amp; business model</li>
+                  <li>Analysis of market and competitive dynamics</li>
+                  <li>Assessment of company projections &amp; value creation levers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between border-t border-slate-200">
+          <button class="icon-btn" data-prev aria-label="Previous slide">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15 18L9 12l6-6"/>
+            </svg>
+          </button>
+
+          <div class="flex gap-2 py-3" id="svcDots"></div>
+
+          <button class="icon-btn" data-next aria-label="Next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section id="sectors" class="py-14">
+    <div class="container px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Sectors</h2>
+      <p class="mt-2 text-slate-600 max-w-4xl">We have executed <strong>1,700+ projects</strong> for <strong>200+ PE funds and corporates</strong> across Europe, giving our teams deep, deal-tested knowledge in <strong>9 core sectors</strong> and dozens of sub-sectors. Our cross-border model brings local market context into every assignment and allows us to staff the right specialists wherever your assets operate.</p>
+      <p class="mt-2 text-slate-600 max-w-4xl">Representative niches include TiC and industrial tech, facility services and FM, medtech and healthcare services, software/SaaS and IT managed services, fintech and payments, renewables &amp; waste, logistics and building products — with credentials available on request.</p>
+
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="sector-card" data-file="Technology.jpg">
+          <img alt="Technology sector image">
+          <div class="caption"><div class="label">Technology</div><div class="text-sm opacity-95">Software, IT services, cybersecurity</div></div>
+        </div>
+        <div class="sector-card" data-file="Built-Environment.jpg">
+          <img alt="Built Environment sector image">
+          <div class="caption"><div class="label">Built Environment</div><div class="text-sm opacity-95">Construction, FM, building products</div></div>
+        </div>
+        <div class="sector-card" data-file="Utilities,-Energy-&-Environment.jpg">
+          <img alt="Utilities, Energy & Environment sector image">
+          <div class="caption"><div class="label">Utilities, Energy &amp; Environment</div><div class="text-sm opacity-95">Power, water, waste, renewables</div></div>
+        </div>
+        <div class="sector-card" data-file="Industry.jpg">
+          <img alt="Industry sector image">
+          <div class="caption"><div class="label">Industry</div><div class="text-sm opacity-95">Industrial tech, equipment, logistics</div></div>
+        </div>
+        <div class="sector-card" data-file="Business-Services.jpg">
+          <img alt="Business Services sector image">
+          <div class="caption"><div class="label">Business Services</div><div class="text-sm opacity-95">Tech-enabled &amp; knowledge services</div></div>
+        </div>
+        <div class="sector-card" data-file="Financial-Services.jpg">
+          <img alt="Financial Services sector image">
+          <div class="caption"><div class="label">Financial Services</div><div class="text-sm opacity-95">Banking, insurance, payments</div></div>
+        </div>
+        <div class="sector-card" data-file="Healthcare-&-Pharma.jpg">
+          <img alt="Healthcare & Pharma sector image">
+          <div class="caption"><div class="label">Healthcare &amp; Pharma</div><div class="text-sm opacity-95">Providers, medtech, life sciences</div></div>
+        </div>
+        <div class="sector-card" data-file="Consumer.jpg">
+          <img alt="Consumer sector image">
+          <div class="caption"><div class="label">Consumer</div><div class="text-sm opacity-95">Retail, e-commerce, brands</div></div>
+        </div>
+        <div class="sector-card" data-file="Education-&-Training.jpg">
+          <img alt="Education & Training sector image">
+          <div class="caption"><div class="label">Education &amp; Training</div><div class="text-sm opacity-95">K-12 &amp; early years, HE/FE, EdTech &amp; services</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICES (static map + contacts with firm details) -->
+  <section id="offices" class="py-14">
+    <div class="container px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Where you find us</h2>
+      <p class="mt-2 text-slate-700 max-w-3xl">CFC has feet on the ground on a global scale to execute CDD, strategy and transformation projects.</p>
+      <p class="text-slate-700 max-w-3xl">We have extensive geographical presence, with 6 own offices across 5 countries, and strategic network partnerships on an international scale (US, China, Australia).</p>
+      <div class="mt-6 grid lg:grid-cols-12 gap-6 items-start">
+        <!-- Static map on the left -->
+        <div class="lg:col-span-7">
+          <div class="mapBox">
+            <img src="assets/europe-map.png" alt="Europe map" class="mapImg" data-fallbacks="assets/europe map.png,assets/europe-map.jpg,assets/europe map.jpg,assets/Europe-map.png,assets/Europe map.png">
+            <!-- Pin positions (percentage based) for 699×563 reference image -->
+            <div class="pin pin-fairgrove" style="left:31.4%; top:44.0%"><span class="lbl">Fairgrove — London (HQ)</span></div>
+            <div class="pin pin-cmi" style="left:42.2%; top:56.2%"><span class="lbl">CMI — Paris (HQ)</span></div>
+            <div class="pin pin-cmi" style="left:39.1%; top:79.0%"><span class="lbl">CMI — Madrid</span></div>
+            <div class="pin pin-codex" style="left:58.2%; top:50.6%"><span class="lbl">CODEX — Frankfurt</span></div>
+            <div class="pin pin-codex" style="left:64.2%; top:57.8%"><span class="lbl">CODEX — Munich (HQ)</span></div>
+            <div class="pin pin-codex" style="left:63.4%; top:60.9%"><span class="lbl">CODEX — Zurich</span></div>
+          </div>
+        </div>
+
+        <!-- Firm details on the right -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="org">
+            <img class="org-logo" src="assets/logo-CMI.png" alt="CMI Strategies logo" onerror="this.style.display='none'">
+            <div>
+              <div class="font-semibold"><span class="text-[var(--cmi)]">CMI Strategies</span></div>
+              <div class="text-sm">2 Rue des Italiens, 75009 Paris, France</div>
+              <div class="text-sm"><button class="bio-link" data-id="nicolas">Nicolas Kandel</button>, President</div>
+              <div class="text-sm"><button class="bio-link" data-id="simon">Simon Colboc</button>, Partner</div>
+              <a class="text-sm underline" href="https://www.cmi-strategies.com" target="_blank" rel="noopener">www.cmi-strategies.com</a>
+            </div>
+          </div>
+
+          <div class="org">
+            <img class="org-logo" src="assets/logo-Fairgrove.png" alt="Fairgrove logo" onerror="this.style.display='none'">
+            <div>
+              <div class="font-semibold"><span class="text-[var(--fairgrove)]">Fairgrove</span></div>
+              <div class="text-sm">16–17 Little Portland Street, W1W 8BP, UK</div>
+              <div class="text-sm"><button class="bio-link" data-id="patrick">Patrick Woodrow</button>, Partner</div>
+              <div class="text-sm"><button class="bio-link" data-id="paddy">Paddy Woods Ballard</button>, Partner</div>
+              <a class="text-sm underline" href="https://www.fairgrovepartners.com" target="_blank" rel="noopener">www.fairgrovepartners.com</a>
+            </div>
+          </div>
+
+          <div class="org">
+            <img class="org-logo" src="assets/logo-CODEX.png" alt="CODEX Partners logo" onerror="this.style.display='none'">
+            <div>
+              <div class="font-semibold"><span class="text-[var(--codex)]">CODEX Partners</span></div>
+              <div class="text-sm">Leopoldstraße 9, 80802 München, Germany</div>
+              <div class="text-sm"><button class="bio-link" data-id="clemens">Clemens Beickler</button>, Partner</div>
+              <div class="text-sm"><button class="bio-link" data-id="ruediger">Dr. Rüdiger Maaß</button>, Partner</div>
+              <a class="text-sm underline" href="https://www.codex-partners.com" target="_blank" rel="noopener">www.codex-partners.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Partner bio modal -->
+  <div id="bioModal" class="bio-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="bio-card relative">
+      <img id="bioPhoto" class="bio-photo" alt="Partner photo">
+      <div class="pr-6">
+        <h3 id="bioName" class="text-2xl font-bold text-[var(--text)]"></h3>
+        <div id="bioText" class="mt-3 space-y-3 text-[15px] leading-7 text-slate-800"></div>
+      </div>
+      <button class="bio-close" aria-label="Close" onclick="hideBio()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+  <!-- REFERENCES -->
+  <section id="references" class="py-14">
+    <div class="container px-4">
+      <h2 class="text-3xl font-bold tracking-tight">References</h2>
+      <p class="mt-2 text-slate-600">CFC supports some of Europe’s most successful PE funds, with a client base of <strong>250+ private equity funds</strong>.</p>
+
+      <div class="logo-marquee" aria-label="Client logos carousel">
+        <div class="logo-track" id="logosTrack">
+          <img src="assets/reference-logos1.png" alt="Client logos set 1" loading="lazy">
+          <img src="assets/reference-logos2.png" alt="Client logos set 2" loading="lazy">
+          <img src="assets/reference-logos3.png" alt="Client logos set 3" loading="lazy">
+          <img src="assets/reference-logos4.png" alt="Client logos set 4" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (form only) -->
+  <section id="contact" class="py-14" style="background:var(--bgPage)">
+    <div class="container px-4">
+      <h2 class="text-3xl font-bold tracking-tight">Contact</h2>
+      <p class="mt-2 text-slate-700 max-w-3xl">Tell us about your investment thesis or transformation challenge. We’ll connect you with the right partners across our hubs.</p>
+
+      <form class="mt-6 grid sm:grid-cols-2 gap-4 card p-6 rounded-lg">
+        <input required type="text" placeholder="Full name" class="px-4 py-3 rounded bg-white border border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[var(--accent)]" />
+        <input required type="email" placeholder="Work email" class="px-4 py-3 rounded bg-white border border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[var(--accent)]" />
+        <input type="text" placeholder="Company" class="px-4 py-3 rounded bg-white border border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[var(--accent)]" />
+        <select class="px-4 py-3 rounded bg-white border border-slate-300 text-slate-700 focus:outline-none focus:border-[var(--accent)]">
+          <option value="">Topic</option>
+          <option>Strategy & Operations</option>
+          <option>Transaction Services</option>
+          <option>Sector discussion</option>
+        </select>
+        <textarea rows="4" placeholder="Your message" class="sm:col-span-2 px-4 py-3 rounded bg-white border border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[var(--accent)]"></textarea>
+        <label class="sm:col-span-2 flex items-start gap-2 text-sm text-slate-600">
+          <input type="checkbox" class="mt-1" required>
+          <span>I agree to the processing of my data and have read the <a href="#data" class="underline">Data Policy</a> and <a href="#imprint" class="underline">Imprint</a>.</span>
+        </label>
+        <button type="submit" class="sm:col-span-2 btn-accent rounded justify-center">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10" style="background:var(--bgPage); color:var(--text)">
+    <div class="container px-4">
+      <div class="flex flex-wrap items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/Logo.png" alt="Consulting For Capital logo" class="h-8 w-auto" onerror="this.style.display='none'">
+          <div class="text-sm">© <span id="year"></span> Consulting For Capital</div>
+        </div>
+        <nav class="text-sm flex items-center gap-4">
+          <a id="imprint" href="#" class="hover:underline">Imprint</a>
+          <a id="data" href="#" class="hover:underline">Data Policy</a>
+          <a href="https://www.linkedin.com/company/consulting-for-capital/posts/?feedView=all" target="_blank" rel="noopener" aria-label="Consulting For Capital on LinkedIn" class="inline-flex items-center text-[var(--text)]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2H12.4c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.09V23h-4v-6.62c0-1.58-.03-3.62-2.21-3.62-2.22 0-2.56 1.73-2.56 3.51V23h-4V8.5z"/></svg>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function toggleMenu(force){
+      const show = typeof force === 'boolean' ? force : mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', !show);
+      document.body.style.overflow = show ? 'hidden' : '';
+    }
+    menuBtn?.addEventListener('click', () => toggleMenu());
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scrollspy: underline active nav item
+    const links = Array.from(document.querySelectorAll('header .navlink'));
+    const ids = links.map(a => a.getAttribute('href'));
+    const sections = ids.map(id => document.querySelector(id));
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const id = '#' + entry.target.id;
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+        }
+      })
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(s => s && spy.observe(s));
+
+    // Services carousel
+    (function(){
+      const root = document.getElementById('svcCarousel');
+      if(!root) return;
+      const track = root.querySelector('div.flex');
+      let index = 0; const max = 2; // 0..2
+      const dots = document.getElementById('svcDots');
+      const tabs = document.getElementById('svcTabs');
+      function setActiveTab(){ if(!tabs) return; [...tabs.querySelectorAll('button')].forEach((b,i)=>b.classList.toggle('active',i===index)); }
+      const render = ()=>{
+        track.style.transform = `translateX(-${index*100/3}%)`;
+        dots.innerHTML = Array.from({length:max+1})
+          .map((_,i)=>`<button class="w-2.5 h-2.5 border rounded ${i===index?'bg-[var(--accent)] border-[var(--accent)]':'border-slate-300'}" data-dot="${i}" aria-label="Go to slide ${i+1}"></button>`)
+          .join('');
+        setActiveTab();
+      };
+      root.querySelector('[data-prev]').onclick = ()=>{ index = (index+max)% (max+1); render(); };
+      root.querySelector('[data-next]').onclick = ()=>{ index = (index+1)% (max+1); render(); };
+      dots.addEventListener('click', e=>{ const b=e.target.closest('button[data-dot]'); if(!b) return; index=+b.dataset.dot; render(); });
+      tabs?.addEventListener('click', e=>{ const b=e.target.closest('button[data-goto]'); if(!b) return; index=+b.dataset.goto; render(); });
+      render();
+    })();
+
+    // Fallback utilities for images
+    window.avatarFallback = function(img){
+      try{
+        const init = img.getAttribute('data-initials') || '?';
+        const ph = document.createElement('div');
+        ph.className = 'avatar flex items-center justify-center bg-slate-100 text-slate-600 font-semibold';
+        ph.textContent = init;
+        img.replaceWith(ph);
+      }catch(e){}
+    };
+
+    // Helper: load sector images from /assets if present
+    (function(){
+      document.querySelectorAll('.sector-card').forEach(card=>{
+        const img = card.querySelector('img');
+        const file = card.dataset.file || '';
+        if(!img || !file) return;
+        const url = 'assets/' + encodeURI(file);
+        img.onerror = () => { img.style.display='none'; };
+        img.src = url;
+      });
+    })();
+  </script>
+  <script>
+  (function(){
+    const map = document.querySelector('.mapBox');
+    if(!map) return;
+    const img = map.querySelector('.mapImg');
+    const pins = map.querySelectorAll('.pin');
+    // hide pins until the map image has loaded
+    pins.forEach(p=>p.style.visibility='hidden');
+
+    function showPins(){ pins.forEach(p=>p.style.visibility='visible'); }
+    function tryLoad(srcs, i=0){
+      if(i>=srcs.length){ console.warn('Map image not found'); return; }
+      img.src = srcs[i];
+      img.onload = showPins;
+      img.onerror = ()=> tryLoad(srcs, i+1);
+    }
+    const fallbacks = (img.dataset.fallbacks||'').split(',').map(s=>s.trim()).filter(Boolean);
+    tryLoad([img.getAttribute('src'), ...fallbacks]);
+
+    // click helper to fine-tune coordinates (logs % values)
+    map.addEventListener('click',(e)=>{
+      const rect = img.getBoundingClientRect();
+      const x=((e.clientX-rect.left)/rect.width)*100;
+      const y=((e.clientY-rect.top)/rect.height)*100;
+      console.log('Map click → left:'+x.toFixed(1)+'%  top:'+y.toFixed(1)+'%');
+    });
+  })();
+</script>
+  <script>
+    // Seamless, gapless reference logo marquee (duplicate content inside one track)
+    (function(){
+      const tracks = document.querySelectorAll('.logo-marquee .logo-track');
+      const setSpeed = (track)=>{
+        // make speed proportional to content width
+        const px = track.scrollWidth; // total content width
+        const speed = Math.max(28, Math.min(90, px / 90)); // seconds
+        track.style.animationDuration = speed + 's';
+      };
+      tracks.forEach(track=>{
+        // duplicate once to enable -50% loop with no gap
+        track.innerHTML += track.innerHTML;
+        setSpeed(track);
+        let raf;  // recalc speed on resize (debounced)
+        window.addEventListener('resize',()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(()=>setSpeed(track)); });
+      });
+    })();
+  </script>
+  <script>
+    // Partner bios modal logic
+    (function(){
+      const BIOS = {
+        clemens:{name:"Clemens Beickler", img:"assets/Clemens-Beickler-CODEX.png", paras:[
+          "was a long-standing member of Bain & Company’s leadership in Germany and co-founded CODEX Partners with Dr. Rüdiger Maaß 25 years ago. He has 35+ years of top-management consulting and investment management experience with more than 500 successfully delivered projects.",
+          "Clemens holds degrees in Business Administration and Economics from the Universities of Zurich and Giessen, and studied Philosophy and Politics at the University of York and the University of California. Focus sectors: Industry, Built Environment, Utilities, Energy & Environment, Business Services, Financial Services, and Education & Training."
+        ]},
+        ruediger:{name:"Dr. Rüdiger Maaß", img:"assets/Ruediger-Maass-CODEX.png", paras:[
+          "was a consultant at Bain & Company and the founder of an internet start-up, and co-founded CODEX Partners with Clemens Beickler 25 years ago. He has 30 years of top-management consulting and technology-sector experience with over 450 successfully delivered projects.",
+          "Dr. Rüdiger Maaß studied Economics in Fribourg (CH) and Barcelona (ES) and holds a PhD in Business Administration. Focus sectors: Healthcare & Pharma and Consumer."
+        ]},
+        patrick:{name:"Patrick Woodrow", img:"assets/Patrick-Woodrow-Fairgrove.png", paras:[
+          "was a consultant at Burlington Consultants in London and Singapore and spent seven years as an independent advisor. Twelve years ago he co-founded Fairgrove with Paddy Woods Ballard. He has 30+ years of top-management consulting experience.",
+          "Patrick holds an MA in English from the University of Cambridge. Focus sectors: Technology, Industry, Healthcare & Pharma."
+        ]},
+        paddy:{name:"Paddy Woods Ballard", img:"assets/Paddy-Woods-Ballard-Fairgrove.png", paras:[
+          "was a consultant at L.E.K. Consulting and an Investment Committee Member at Octopus Private Equity, and twelve years ago co-founded Fairgrove with Patrick Woodrow. He has 25+ years of top-management consulting experience.",
+          "Paddy holds an MA in Economics from the University of Cambridge and an MBA from INSEAD. Focus sectors: Technology, Business Services and Financial Services."
+        ]},
+        nicolas:{name:"Nicolas Kandel", img:"assets/Nicolas-Kandel-CMI.png", paras:[
+          "has been with CMI for over 25 years and has 30+ years of top-management consulting experience.",
+          "Nicolas is an agronomic engineer and holds a DEA from École Centrale Paris. Focus sectors: Built Environment; Utilities, Energy & Environment; and Business Services."
+        ]},
+        simon:{name:"Simon Colboc", img:"assets/Simon-Colboc-CMI.png", paras:[
+          "has 17 years of top-management consulting experience as well as 20 years in banking and insurance.",
+          "Simon holds an MSc in Economics & Engineering from École Centrale Paris. Focus sectors: Built Environment, Business Services and Financial Services."
+        ]}
+      };
+
+      const modal = document.getElementById('bioModal');
+      const photo = document.getElementById('bioPhoto');
+      const nameEl = document.getElementById('bioName');
+      const textEl = document.getElementById('bioText');
+
+      function showBio(id){
+        const b = BIOS[id];
+        if(!b) return;
+        nameEl.textContent = b.name;
+        photo.src = b.img;
+        photo.onerror = () => { photo.style.display='none'; };
+        textEl.innerHTML = b.paras.map(p=>`<p>${p}</p>`).join('');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      window.hideBio = function(){ modal.style.display='none'; document.body.style.overflow=''; };
+
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) hideBio(); });
+      document.querySelectorAll('.bio-link').forEach(a=>{
+        a.addEventListener('click', ()=> showBio(a.dataset.id));
+      });
+    })();
+  </script>
+</body>
+</html>
